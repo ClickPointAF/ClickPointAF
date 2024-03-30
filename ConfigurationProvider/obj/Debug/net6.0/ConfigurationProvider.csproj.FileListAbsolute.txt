@@ -1,0 +1,11 @@
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\bin\Debug\net6.0\ConfigurationProvider.deps.json
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\bin\Debug\net6.0\ConfigurationProvider.dll
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\bin\Debug\net6.0\ConfigurationProvider.pdb
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\ConfigurationProvider.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\ConfigurationProvider.AssemblyInfoInputs.cache
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\ConfigurationProvider.AssemblyInfo.cs
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\ConfigurationProvider.csproj.CoreCompileInputs.cache
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\ConfigurationProvider.dll
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\refint\ConfigurationProvider.dll
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\ConfigurationProvider.pdb
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\ConfigurationProvider\obj\Debug\net6.0\ref\ConfigurationProvider.dll

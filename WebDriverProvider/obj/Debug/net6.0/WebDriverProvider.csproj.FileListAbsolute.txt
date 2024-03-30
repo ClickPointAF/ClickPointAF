@@ -1,0 +1,11 @@
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\bin\Debug\net6.0\WebDriverProvider.deps.json
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\bin\Debug\net6.0\WebDriverProvider.dll
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\bin\Debug\net6.0\WebDriverProvider.pdb
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\WebDriverProvider.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\WebDriverProvider.AssemblyInfoInputs.cache
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\WebDriverProvider.AssemblyInfo.cs
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\WebDriverProvider.csproj.CoreCompileInputs.cache
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\WebDriverProvider.dll
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\refint\WebDriverProvider.dll
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\WebDriverProvider.pdb
+C:\Users\iiolu\OneDrive\Documentos\ClickPointAF\WebDriverProvider\obj\Debug\net6.0\ref\WebDriverProvider.dll
