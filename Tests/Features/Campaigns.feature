@@ -1,7 +1,7 @@
 ﻿Feature: Campaigns
 Workflow to edit campaigns
 
-@CreateCampaign
+@CreateCampaignWithLead
 Scenario: Edit Price of a Campaign
 	Given the user navigates to "Campaigns" section
 	When the user double clicks the recently created campaign

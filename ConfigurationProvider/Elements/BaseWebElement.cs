@@ -62,7 +62,7 @@ namespace ConfigurationProvider.Classes.Elements
                 return false;
             }
         }
-        public bool Deleted()
+        public bool NotDisplayed()
         {
             try
             {

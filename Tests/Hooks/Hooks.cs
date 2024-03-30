@@ -89,7 +89,7 @@ namespace TestSolution.Hooks
             scenarioContext["DriverFactory"] = _factory;
         }
 
-        [BeforeScenario("CreateCampaign", Order = 2)]
+        [BeforeScenario("CreateCampaignWithLead", Order = 2)]
         public void CreateCampaign(ScenarioContext scenarioContext)
         {
             var lead = new LeadSource()

@@ -15,8 +15,6 @@ Scenario: Create Lead Source From Welcome Section
 		| 30            | false              | false      | false       | false       | 5             | Any Qualified Clients |
 	And the user navigates to "Lead Source List" section
 	Then the user validates that the new Lead Source is created
-		| Name         | Email                |
-		| Jorge Chavez | ljorchavez@gmail.com |
 
 Scenario: Create Lead Source From Inbound Section
 	Given the user navigates to "Lead Source List" section
@@ -32,6 +30,9 @@ Scenario: Create Lead Source From Inbound Section
 		| 30            | false              | false      | false       | false       | 5             | Any Qualified Clients |
 	And the user navigates to "Lead Source List" section
 	Then the user validates that the new Lead Source is created
-		| Name        | Email                    |
-		| Luis Chavez | luis_jorge95@hotmail.com |
 
+@CreateCampaignWithLead
+Scenario: Delete Lead
+	Given the user navigates to "Lead Source List" section
+	When the user deletes the recently created Lead Source
+	And the user clicks ded Delete button

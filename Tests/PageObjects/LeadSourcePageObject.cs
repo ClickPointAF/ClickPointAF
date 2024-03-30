@@ -31,5 +31,14 @@ namespace TestSolution.PageObjects
             }
             return false;
         }
+        public bool LeadSourceNotDisplayed(LeadSource lead)
+        {
+            if (IsNotDisplayed("LeadSourceIsDisplayed", "Lead Source Page", lead.Name!) &
+            IsNotDisplayed("LeadSourceIsDisplayed", "Lead Source Page", lead.Email!))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

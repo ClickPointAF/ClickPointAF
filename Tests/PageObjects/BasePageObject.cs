@@ -191,6 +191,19 @@ namespace TestSolution.PageObjects
             }
         }
 
+        public bool IsNotDisplayed(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                return _element.NotDisplayed();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+
         public void ElementHover(string elementName, string pageView, params string[] arguments)
         {
             try

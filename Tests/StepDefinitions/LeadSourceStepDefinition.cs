@@ -15,12 +15,28 @@ namespace TestSolution.StepDefinitions
         {
             LeadSource lead = table.CreateInstance<LeadSource>();
             _leadSourcePage.CreateLead(lead);
+
+            _scenarioContext["LeadData"] = lead;
+        }
+
+        [When(@"the user deletes the recently created Lead Source")]
+        public void WhenTheUserSelectsTheRecentlyCreatedLead()
+        {
+            var lead = (LeadSource)_scenarioContext["LeadData"];
+            _leadSourcePage.DeleteLead(lead);
+        }
+
+        [Then(@"the user validates that the new Lead Source is deleted")]
+        public void WhenTheUserClicksDedDeleteButton()
+        {
+            var lead = (LeadSource)_scenarioContext["LeadData"];
+            Assert.That(_leadSourcePage.LeadSourceDisplayed(lead), Is.True);
         }
 
         [Then(@"the user validates that the new Lead Source is created")]
-        public void ThenTheUserValidatesThatTheNewLeadSourceIsCreated(Table table)
+        public void ThenTheUserValidatesThatTheNewLeadSourceIsCreated()
         {
-            LeadSource lead = table.CreateInstance<LeadSource>();
+            var lead = (LeadSource)_scenarioContext["LeadData"];
             Assert.That(_leadSourcePage.LeadSourceDisplayed(lead), Is.True);
         }
 
