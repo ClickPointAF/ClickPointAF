@@ -37,9 +37,10 @@ namespace TestSolution.StepDefinitions
         [Then(@"the user should be succesfully logged in")]
         public void ThenTheUserShouldBeSuccesfullyLoggedIn()
         {
-            Assert.That(_factory.GetCurrentTitle(), Is.EqualTo("LeadExec | Welcome to LeadExec"));
             Assert.That(_navbarPageObject.IsDisplayed("LoggedInText", "Navbar Page"), Is.True);
-            Assert.That(_navbarPageObject.IsDisplayed("LoggedInMail", "Navbar Page"), Is.True);
+            Assert.That(_navbarPageObject.IsDisplayed("LoggedInMail", "Navbar Page", AppSettings.Instance.AdminUser.Email!), Is.True);
+            Assert.That(_factory.GetCurrentTitle(), Is.EqualTo("LeadExec | Welcome to LeadExec"));
+
         }
 
         [Then(@"the user should not be succesfully logged in")]

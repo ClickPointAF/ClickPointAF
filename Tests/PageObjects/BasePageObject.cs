@@ -28,7 +28,8 @@ namespace TestSolution.PageObjects
             {
                 try
                 {
-                    Thread.Sleep(5000);
+                    var _button = UIElementFactory.GetPOElement("ClosePopupButton", "Welcome Page", _driverFactory);
+                    _button.Click();
                     SendGlobalEscape();
 
                     var _buttonRetry = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);

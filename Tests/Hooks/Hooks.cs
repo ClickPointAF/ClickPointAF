@@ -66,6 +66,7 @@ namespace TestSolution.Hooks
         [BeforeScenario(Order = 1)]
         public void BeforeScenario(ScenarioContext scenarioContext)
         {
+            Logger.WriteLine($"==== BeforeScenario Hook: Create Driver ====");
             var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _webDriverConfigurationJson);
             var configuration = configurationReader.GetConfiguration<WebDriverConfiguration>();
             if (Environment.GetEnvironmentVariable("GITHUB_ACTIONS") == "true")
@@ -92,6 +93,7 @@ namespace TestSolution.Hooks
         [BeforeScenario("CreateCampaignWithLead", Order = 2)]
         public void CreateCampaign(ScenarioContext scenarioContext)
         {
+            Logger.WriteLine($"==== BeforeScenario Hook: CreateCampaignWithLead ====");
             var lead = new LeadSource()
             {
                 Name = "Luis Chavez",
@@ -149,12 +151,10 @@ namespace TestSolution.Hooks
             Logger.WriteLine(statusMessage);
         }
 
-        [AfterScenario]
+        [AfterScenario("DeleteLead")]
         public void DeleteCampaignAndLead(ScenarioContext scenarioContext)
         {
             var lead = (LeadSource)scenarioContext["LeadData"];
-            var campaign = (Campaign)scenarioContext["CampaignData"];
-            var propertie = (Propertie)scenarioContext["PropertieData"];
 
             _navbarPage?.ClickButton("NavBarButtons", "Navbar Page", "Lead Source List");
             _leadSourcePage?.DeleteLead(lead);

@@ -1,6 +1,7 @@
 ﻿Feature: Lead Source
 Workflow to create a Lead Source into a new Campaign
 
+@DeleteLead
 Scenario: Create Lead Source From Welcome Section
 	Given the user navigates to "Welcome" section
 	And the user clicks on "Create a Lead Source" button
@@ -16,6 +17,7 @@ Scenario: Create Lead Source From Welcome Section
 	And the user navigates to "Lead Source List" section
 	Then the user validates that the new Lead Source is created
 
+@DeleteLead
 Scenario: Create Lead Source From Inbound Section
 	Given the user navigates to "Lead Source List" section
 	And the user clicks on "Create Button" in the "Lead Source Page"
