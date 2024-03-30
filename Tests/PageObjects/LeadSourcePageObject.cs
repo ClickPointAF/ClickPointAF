@@ -17,6 +17,11 @@ namespace TestSolution.PageObjects
         {
             CreateLeadSource(lead);
         }
+
+        public void DeleteLead(LeadSource lead)
+        {
+            DeleteLeadSource(lead);
+        }
         public bool LeadSourceDisplayed(LeadSource lead)
         {
             if (IsDisplayed("LeadSourceIsDisplayed", "Lead Source Page", lead.Name!) &

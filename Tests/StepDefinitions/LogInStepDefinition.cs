@@ -1,5 +1,6 @@
 ﻿using ConfigurationProvider.Classes;
 using CsvHelper;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TestSolution.Models;
 
@@ -36,14 +37,15 @@ namespace TestSolution.StepDefinitions
         [Then(@"the user should be succesfully logged in")]
         public void ThenTheUserShouldBeSuccesfullyLoggedIn()
         {
-            _navbarPageObject.IsDisplayed("LoggedInText", "Navbar Page");
-            _navbarPageObject.IsDisplayed("LoggedInMail", "Navbar Page", AppSettings.Instance.AdminUser.Email!);
+            Assert.That(_factory.GetCurrentTitle(), Is.EqualTo("LeadExec | Welcome to LeadExec"));
+            Assert.That(_navbarPageObject.IsDisplayed("LoggedInText", "Navbar Page"), Is.True);
+            Assert.That(_navbarPageObject.IsDisplayed("LoggedInMail", "Navbar Page"), Is.True);
         }
 
         [Then(@"the user should not be succesfully logged in")]
         public void ThenTheUserShouldNotBeSuccesfullyLoggedIn()
         {
-            _loginPageObject.IsDisplayed("BadLogInAlert", "Login Page");
+            Assert.That(_loginPageObject.IsDisplayed("BadLogInAlert", "Login Page"), Is.True);
         }
 
     }

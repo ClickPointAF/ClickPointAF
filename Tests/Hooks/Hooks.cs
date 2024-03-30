@@ -9,6 +9,8 @@ using TechTalk.SpecFlow;
 using TestSolution.PageObjects;
 using ConfigurationProvider;
 using System.Collections;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel.Resources;
+using CsvHelper;
 
 namespace TestSolution.Hooks
 {
@@ -18,6 +20,13 @@ namespace TestSolution.Hooks
         private readonly ScenarioContext _scenarioContext;
         private readonly string _webDriverConfigurationJson;
         public static AllureLifecycle allure = AllureLifecycle.Instance;
+        private WebDriverFactory? _factory;
+        private LoginPage? _loginPage;
+        private NavbarPage? _navbarPage;
+        private LeadSourcePage? _leadSourcePage;
+        private CampaignPage? _campaignPage;
+        private PropertiePage? _propertiePage;
+
         public Hooks(ScenarioContext scenarioContext)
         {
             _webDriverConfigurationJson = "Configurations//appsettings.json";
@@ -33,17 +42,28 @@ namespace TestSolution.Hooks
         [BeforeFeature]
         public static void logBeforeFeatureExecution(FeatureContext _featureContext)
         {
-            Logger.WriteLine("================= Feature: " + _featureContext.FeatureInfo.Title + " =================");
+            Logger.WriteLine($"================= Feature: {_featureContext.FeatureInfo.Title} =================");
         }
 
-        [BeforeScenario]
+        [BeforeScenario(Order = 0)]
         public static void logBeforeScenarioExecution(ScenarioContext _scenarioContext)
         {
             DictionaryEntry args = _scenarioContext.ScenarioInfo.Arguments.Cast<DictionaryEntry>().FirstOrDefault();
-            Logger.WriteLine("*** Scenario: " + _scenarioContext.ScenarioInfo.Title + (args.Value == null ? "" : " (" + args.Value + ")") + " ***"); ;
+            Logger.WriteLine($"==== Scenario: {_scenarioContext.ScenarioInfo.Title} ====");
         }
 
-        [BeforeScenario]
+        [BeforeStep]
+        public static void LogBeforeStepExecution(ScenarioContext scenarioContext)
+        {
+            // Accessing the current step information
+            var stepInfo = scenarioContext.StepContext.StepInfo;
+
+            // Logging the step definition type (Given, When, Then) and the step text
+            Logger.WriteLine($"Executing step [{stepInfo.StepDefinitionType}]: {stepInfo.Text}");
+        }
+
+
+        [BeforeScenario(Order = 1)]
         public void BeforeScenario(ScenarioContext scenarioContext)
         {
             var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _webDriverConfigurationJson);
@@ -52,17 +72,65 @@ namespace TestSolution.Hooks
             {
                 configuration.IsRemote = true;
             }
-            var factory = new WebDriverFactory(configuration);
-            var _loginPage = new LoginPage(factory);
+            _factory = new WebDriverFactory(configuration);
+            _navbarPage = new NavbarPage(_factory);
+            _leadSourcePage = new LeadSourcePage(_factory);
+            _campaignPage = new CampaignPage(_factory);
+            _propertiePage = new PropertiePage(_factory);
+            _loginPage = new LoginPage(_factory);
 
             var scenarioTags = _scenarioContext.ScenarioInfo.Tags.ToList();
             if (!scenarioTags.Contains("LogInFeature"))
             {
-                factory.NavigateToBaseUrl();
+                _factory.NavigateToBaseUrl();
                 _loginPage.LoginUser(AppSettings.Instance.AdminUser);
             }
 
-            scenarioContext["DriverFactory"] = factory;
+            scenarioContext["DriverFactory"] = _factory;
+        }
+
+        [BeforeScenario("CreateCampaign", Order = 2)]
+        public void CreateCampaign(ScenarioContext scenarioContext)
+        {
+            var lead = new LeadSource()
+            {
+                Name = "Luis Chavez",
+                Email = "luis_jorge95@hotmail.com",
+                Country = "United States",
+                Address = "Greenway Rd",
+                Address2 = "",
+                City = "Phoenix",
+                State = "Arizona",
+                ZipCode = "85032"
+            };
+            var campaign = new Campaign()
+            {
+                Name = "Contact Us",
+                Channel = "Web Leads",
+                LeadType = "Other",
+                Price = "100",
+                RequireAuth = true
+            };
+            var propertie = new Propertie()
+            {
+                DuplicateDays = "30",
+                StandardizeAddress = false,
+                AppendCity = false,
+                MobileCheck = false,
+                GeolocateIP = false,
+                DeliveryCount = "5",
+                DeliversTo = "Any Qualified Clients"
+            };
+
+            scenarioContext["LeadData"] = lead;
+            scenarioContext["CampaignData"] = campaign;
+            scenarioContext["PropertieData"] = propertie;
+
+            _navbarPage?.ClickButton("NavBarButtons", "Navbar Page", "Lead Source List");
+            _leadSourcePage?.ClickButton("Create Button", "Lead Source Page");
+            _leadSourcePage?.CreateLead(lead);
+            _campaignPage?.CreateCampaign(campaign);
+            _propertiePage?.CreatePropertie(propertie);
         }
 
         [AfterStep]
@@ -79,6 +147,19 @@ namespace TestSolution.Hooks
             }
 
             Logger.WriteLine(statusMessage);
+        }
+
+        [AfterScenario]
+        public void DeleteCampaignAndLead(ScenarioContext scenarioContext)
+        {
+            var lead = (LeadSource)scenarioContext["LeadData"];
+            var campaign = (Campaign)scenarioContext["CampaignData"];
+            var propertie = (Propertie)scenarioContext["PropertieData"];
+
+            _navbarPage?.ClickButton("NavBarButtons", "Navbar Page", "Lead Source List");
+            _leadSourcePage?.DeleteLead(lead);
+            //_navbarPage?.ClickButton("NavBarButtons", "Navbar Page", "Campaigns");
+            //_campaignPage?.DeleteCampaign(lead);
         }
 
         [AfterScenario]

@@ -1,3 +1,4 @@
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TestSolution.Models;

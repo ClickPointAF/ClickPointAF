@@ -16,6 +16,7 @@ namespace TestSolution.PageObjects
         public void CreatePropertie(Propertie propertie)
         {
             CreatePropertieWithData(propertie);
+            SendGlobalEscape();
         }
     }
 }

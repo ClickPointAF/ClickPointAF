@@ -8,6 +8,7 @@ namespace TestSolution.StepDefinitions
         public CommonSteps(ScenarioContext scenarioContext) : base(scenarioContext) { }
 
         [Given(@"the user navigates to ""([^""]*)"" section")]
+        [When(@"the user navigates to ""([^""]*)"" section")]
         public void GivenTheUserNavigatesToSection(string sectionName)
         {
             _navbarPageObject.ClickButton("NavBarButtons", "Navbar Page", sectionName);

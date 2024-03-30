@@ -55,5 +55,17 @@ namespace TestSolution.PageObjects
         [Element("LeadSourceIsDisplayed", ElementType.Button)]
         [Locator(LocatorType.XPath, "//tbody[@role='presentation']//tr[@role='row']//td[contains(text(), '{0}')]")]
         public Button? LeadSourceIsDisplayed { get; }
+
+        [Element("LeadSourceRow", ElementType.Button)]
+        [Locator(LocatorType.XPath, "//tr[td[contains(text(), '{0}')] and td[contains(text(), '{1}')]]")]
+        public Button? LeadSourceRow { get; }
+
+        [Element("LeadSourceDeleteButton", ElementType.Button)]
+        [Locator(LocatorType.Id, "btnDelete")]
+        public Button? LeadSourceDeleteButton { get; }
+
+        [Element("LeadSourceConfirmDelete", ElementType.Button)]
+        [Locator(LocatorType.Id, "confirmationButton")]
+        public Button? LeadSourceConfirmDelete { get; }
     }
 }

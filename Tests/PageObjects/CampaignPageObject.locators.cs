@@ -28,6 +28,10 @@ namespace TestSolution.PageObjects
         [Locator(LocatorType.Id, "CampaignDetails_GeneralOptions_Price")]
         public TextBox? CampaignPriceTextbox { get; }
 
+        [Element("EditCampaignPriceTextbox", ElementType.TextBox)]
+        [Locator(LocatorType.Id, "GeneralOptions_Price")]
+        public TextBox? EditCampaignPriceTextbox { get; }
+
         [Element("CampaignRequireAuthCheckbox", ElementType.CheckBox)]
         [Locator(LocatorType.XPath, "//input[@id='CampaignDetails_GeneralOptions_RequiresAuthentication']/following-sibling::span")]
         public CheckBox? CampaignRequireAuthCheckbox { get; }
@@ -35,6 +39,14 @@ namespace TestSolution.PageObjects
         [Element("CampaignNextButton", ElementType.Button)]
         [Locator(LocatorType.Id, "createNextBtn")]
         public Button? CampaignNextButton { get; }
+
+        [Element("CampaignRow", ElementType.Button)]
+        [Locator(LocatorType.XPath, "//tr[td[contains(text(), '{0}')] and td[contains(text(), '{1}')]]")]
+        public Button? CampaignRow { get; }
+
+        [Element("CampaignSave", ElementType.Button)]
+        [Locator(LocatorType.Id, "btnCampaignSave")]
+        public Button? CampaignSave { get; }
 
     }
 }

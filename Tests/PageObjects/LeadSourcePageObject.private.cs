@@ -28,5 +28,19 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to Create a Lead Source. {e.Message}.", e.InnerException);
             }
         }
+
+        private void DeleteLeadSource(LeadSource lead)
+        {
+            try
+            {
+                ClickButton("LeadSourceRow", "Lead Source Page", lead.Name!, lead.Email!);
+                ClickButton("LeadSourceDeleteButton", "Lead Source Page");
+                ClickButton("LeadSourceConfirmDelete", "Lead Source Page");
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to Delete a Lead Source. {e.Message}.", e.InnerException);
+            }
+        }
     }
 }

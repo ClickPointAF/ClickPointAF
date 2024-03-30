@@ -1,6 +1,9 @@
-﻿using ConfigurationProvider.Classes;
+﻿using AngleSharp.Dom;
+using ConfigurationProvider.Classes;
+using ConfigurationProvider.Classes.Elements;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using WebDriverProvider.Classes;
 
 namespace TestSolution.PageObjects
@@ -20,6 +23,56 @@ namespace TestSolution.PageObjects
             {
                 var _button = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
                 _button.Click();
+            }
+            catch (Exception firstAttemptException)
+            {
+                try
+                {
+                    Thread.Sleep(1000);
+                    SendGlobalEscape();
+
+                    var _buttonRetry = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                    _buttonRetry.Click();
+                }
+                catch (Exception secondAttemptException)
+                {
+                    throw new Exception($"Unable to click the button after retry. First attempt: {firstAttemptException.Message}. Second attempt: {secondAttemptException.Message}.", secondAttemptException);
+                }
+            }
+        }
+
+        public void DoubleClickButton(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _button = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                _button.DoubleClick();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to double click the button. {e.Message}.", e.InnerException);
+            }
+        }
+
+        public void RightClickButton(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _button = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                _button.RightClick();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to right click the button. {e.Message}.", e.InnerException);
+            }
+        }
+
+        public void SendGlobalEscape()
+        {
+            try
+            {
+                Actions actions = new Actions(_driver);
+                actions.SendKeys(Keys.Escape).Perform();
             }
             catch (Exception e)
             {
