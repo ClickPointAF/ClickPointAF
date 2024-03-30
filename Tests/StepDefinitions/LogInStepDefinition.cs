@@ -43,7 +43,7 @@ namespace TestSolution.StepDefinitions
         [Then(@"the user should not be succesfully logged in")]
         public void ThenTheUserShouldNotBeSuccesfullyLoggedIn()
         {
-            _loginPageObject.IsDisplayed("BadLogInAlert", "Navbar Page");
+            _loginPageObject.IsDisplayed("BadLogInAlert", "Login Page");
         }
 
     }
