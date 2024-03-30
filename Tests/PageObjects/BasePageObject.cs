@@ -28,7 +28,7 @@ namespace TestSolution.PageObjects
             {
                 try
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(5000);
                     SendGlobalEscape();
 
                     var _buttonRetry = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);

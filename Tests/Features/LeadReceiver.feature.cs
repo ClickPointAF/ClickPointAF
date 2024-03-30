@@ -154,14 +154,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 16
  testRunner.And("the user navigates to \"Lead Source List\" section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Name",
-                            "Email"});
-                table4.AddRow(new string[] {
-                            "Jorge Chavez",
-                            "ljorchavez@gmail.com"});
 #line 17
- testRunner.Then("the user validates that the new Lead Source is created", ((string)(null)), table4, "Then ");
+ testRunner.Then("the user validates that the new Lead Source is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -174,7 +168,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Lead Source From Inbound Section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 21
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -184,13 +178,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 22
+#line 20
  testRunner.Given("the user navigates to \"Lead Source List\" section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 23
+#line 21
  testRunner.And("the user clicks on \"Create Button\" in the \"Lead Source Page\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Email",
                             "Country",
@@ -199,7 +193,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "City",
                             "State",
                             "ZipCode"});
-                table5.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Luis Chavez",
                             "luis_jorge95@hotmail.com",
                             "United States",
@@ -208,25 +202,25 @@ this.ScenarioInitialize(scenarioInfo);
                             "Phoenix",
                             "Arizona",
                             "85032"});
-#line 24
- testRunner.When("the user inputs the following Lead Source data table", ((string)(null)), table5, "When ");
+#line 22
+ testRunner.When("the user inputs the following Lead Source data table", ((string)(null)), table4, "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Channel",
                             "Lead Type",
                             "Price",
                             "RequireAuth"});
-                table6.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Contact Us",
                             "Web Leads",
                             "Other",
                             "100",
                             "true"});
-#line 27
- testRunner.And("the user inputs the following Campaign data table", ((string)(null)), table6, "And ");
+#line 25
+ testRunner.And("the user inputs the following Campaign data table", ((string)(null)), table5, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "DuplicateDays",
                             "StandardizeAddress",
                             "AppendCity",
@@ -234,7 +228,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "GeolocateIP",
                             "DeliveryCount",
                             "DeliversTo"});
-                table7.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "30",
                             "false",
                             "false",
@@ -242,20 +236,46 @@ this.ScenarioInitialize(scenarioInfo);
                             "false",
                             "5",
                             "Any Qualified Clients"});
-#line 30
- testRunner.And("the user inputs the following Propertie data table", ((string)(null)), table7, "And ");
+#line 28
+ testRunner.And("the user inputs the following Propertie data table", ((string)(null)), table6, "And ");
 #line hidden
-#line 33
+#line 31
  testRunner.And("the user navigates to \"Lead Source List\" section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Name",
-                            "Email"});
-                table8.AddRow(new string[] {
-                            "Luis Chavez",
-                            "luis_jorge95@hotmail.com"});
-#line 34
- testRunner.Then("the user validates that the new Lead Source is created", ((string)(null)), table8, "Then ");
+#line 32
+ testRunner.Then("the user validates that the new Lead Source is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Delete Lead")]
+        [NUnit.Framework.CategoryAttribute("CreateCampaignWithLead")]
+        public void DeleteLead()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "CreateCampaignWithLead"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Lead", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 35
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 36
+ testRunner.Given("the user navigates to \"Lead Source List\" section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 37
+ testRunner.When("the user deletes the recently created Lead Source", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 38
+ testRunner.Then("the user validates that the new Lead Source is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

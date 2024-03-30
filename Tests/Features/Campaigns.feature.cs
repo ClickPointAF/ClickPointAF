@@ -75,11 +75,11 @@ namespace Tests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Edit Price of a Campaign")]
-        [NUnit.Framework.CategoryAttribute("CreateCampaign")]
+        [NUnit.Framework.CategoryAttribute("CreateCampaignWithLead")]
         public void EditPriceOfACampaign()
         {
             string[] tagsOfScenario = new string[] {
-                    "CreateCampaign"};
+                    "CreateCampaignWithLead"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit Price of a Campaign", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5

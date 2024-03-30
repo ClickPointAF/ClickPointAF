@@ -30,7 +30,7 @@ namespace TestSolution.StepDefinitions
         public void WhenTheUserClicksDedDeleteButton()
         {
             var lead = (LeadSource)_scenarioContext["LeadData"];
-            Assert.That(_leadSourcePage.LeadSourceDisplayed(lead), Is.True);
+            Assert.That(_leadSourcePage.LeadSourceNotDisplayed(lead), Is.True);
         }
 
         [Then(@"the user validates that the new Lead Source is created")]
