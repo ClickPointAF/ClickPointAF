@@ -55,8 +55,12 @@ namespace TestSolution.Hooks
             var factory = new WebDriverFactory(configuration);
             var _loginPage = new LoginPage(factory);
 
-            factory.NavigateToBaseUrl();
-            _loginPage.LoginUser(AppSettings.Instance.AdminUser);
+            var scenarioTags = _scenarioContext.ScenarioInfo.Tags.ToList();
+            if (!scenarioTags.Contains("LogInFeature"))
+            {
+                factory.NavigateToBaseUrl();
+                _loginPage.LoginUser(AppSettings.Instance.AdminUser);
+            }
 
             scenarioContext["DriverFactory"] = factory;
         }

@@ -23,5 +23,9 @@ namespace TestSolution.PageObjects
         [Element("LoginButton", ElementType.Button)]
         [Locator(LocatorType.Id, "loginBtn")]
         public Button? LoginButton { get; }
+
+        [Element("BadLogInAlert", ElementType.Button)]
+        [Locator(LocatorType.Id, "badLoginAlert")]
+        public Button? BadLogInAlert { get; }
     }
 }

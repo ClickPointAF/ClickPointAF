@@ -1,10 +1,6 @@
-using ConfigurationProvider.Classes;
-using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TestSolution.Models;
-using TestSolution.PageObjects;
-using WebDriverProvider.Classes;
 
 namespace TestSolution.StepDefinitions
 {
