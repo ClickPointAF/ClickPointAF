@@ -1,0 +1,181 @@
+﻿using ConfigurationProvider.Classes;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using WebDriverProvider.Classes;
+
+namespace TestSolution.PageObjects
+{
+    public abstract class BasePageObject
+    {
+        public WebDriverFactory _driverFactory;
+        public readonly IWebDriver _driver;
+        public BasePageObject(WebDriverFactory driverFactory)
+        {
+            _driverFactory = driverFactory;
+            _driver = _driverFactory.GetInstanceOf();
+        }
+        public void ClickButton(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _button = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                _button.Click();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to click the button. {e.Message}.", e.InnerException);
+            }
+        }
+        public void CheckElement(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _checkbox = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                _checkbox.Check();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to check the element. {e.Message}.", e.InnerException);
+            }
+        }
+        public void UncheckElement(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _checkbox = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                _checkbox.Uncheck();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to uncheck the element. {e.Message}.", e.InnerException);
+            }
+        }
+        public void CheckboxState(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _checkbox = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                _checkbox.Uncheck();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to uncheck the element. {e.Message}.", e.InnerException);
+            }
+        }
+        public void WriteInput(string elementName, string pageView, string argument = "")
+        {
+            try
+            {
+                var _textBox = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, argument);
+                _textBox.SendKeys(argument);
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to write the input. {e.Message}.", e.InnerException);
+            }
+        }
+        public string ElementValue(string elementName, string pageView, string argument = "")
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, argument);
+                return _element.GetValue();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to retrieve the value for {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+
+        public void SelectElementByValue(string elementName, string pageView, string value, string argument = "")
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, argument);
+                _element.SelectValue(value);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to set the value for {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+        public void SelectElementByText(string elementName, string pageView, string value, string argument = "")
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, argument);
+                _element.SelectText(value);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to set the value for {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+        public void SelectElementByContainingText(string elementName, string pageView, string value, string argument = "")
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, argument);
+                _element.SelectByTextContaining(value);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to set the value for {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+
+        public bool IsDisplayed(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                return _element.Displayed();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+
+        public void ElementHover(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                _element.Hover();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+        public bool IsDeleted(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                return _element.Deleted();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+
+        public string AttributeValue(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                return _element.GetColor();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+
+
+    }
+}
