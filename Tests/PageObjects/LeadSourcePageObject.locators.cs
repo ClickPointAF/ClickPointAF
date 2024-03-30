@@ -12,6 +12,10 @@ namespace TestSolution.PageObjects
 {
     public partial class LeadSourcePage
     {
+        [Element("Create Button", ElementType.Button)]
+        [Locator(LocatorType.Id, "createLeadSourceBtn")]
+        public Button? CreateButton { get; }
+
         [Element("LeadSourceNameTextbox", ElementType.TextBox)]
         [Locator(LocatorType.Id, "Name")]
         public TextBox? LeadSourceNameTextbox { get; }

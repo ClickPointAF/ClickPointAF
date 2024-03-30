@@ -21,7 +21,6 @@ namespace ConfigurationProvider.Classes.Elements
 
             WebElement.Clear();
             WebElement.SendKeys(keyToSend);
-            Thread.Sleep(1000);
             WebElement.SendKeys(Keys.Tab);
         }
     }
