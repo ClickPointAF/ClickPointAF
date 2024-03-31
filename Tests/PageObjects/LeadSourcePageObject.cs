@@ -24,21 +24,9 @@ namespace TestSolution.PageObjects
         }
         public bool LeadSourceDisplayed(LeadSource lead)
         {
-            if (IsDisplayed("LeadSourceIsDisplayed", "Lead Source Page", lead.Name!) &
-            IsDisplayed("LeadSourceIsDisplayed", "Lead Source Page", lead.Email!))
-            {
-                return true;
-            }
-            return false;
-        }
-        public bool LeadSourceNotDisplayed(LeadSource lead)
-        {
-            if (IsNotDisplayed("LeadSourceIsDisplayed", "Lead Source Page", lead.Name!) &
-            IsNotDisplayed("LeadSourceIsDisplayed", "Lead Source Page", lead.Email!))
-            {
-                return true;
-            }
-            return false;
+            var elements = RetrieveElements("LeadSourceList", "Lead Source Page");
+            bool containsName = elements.Any(element => element.Text.Contains(lead.Name!));
+            return containsName;
         }
     }
 }

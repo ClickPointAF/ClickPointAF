@@ -192,6 +192,20 @@ namespace TestSolution.PageObjects
             }
         }
 
+        public List<IWebElement> RetrieveElements(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                return _element.FindElements();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the elements {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+        
+
         public bool IsNotDisplayed(string elementName, string pageView, params string[] arguments)
         {
             try

@@ -67,5 +67,10 @@ namespace TestSolution.PageObjects
         [Element("LeadSourceConfirmDelete", ElementType.Button)]
         [Locator(LocatorType.Id, "confirmationButton")]
         public Button? LeadSourceConfirmDelete { get; }
+
+        [Element("LeadSourceList", ElementType.List)]
+        [Locator(LocatorType.XPath, "//tbody[@role='presentation']//tr[@role='row']")]
+        public List? LeadSourceList { get; }
+        
     }
 }

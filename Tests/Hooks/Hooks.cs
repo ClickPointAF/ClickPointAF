@@ -11,6 +11,8 @@ using ConfigurationProvider;
 using System.Collections;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Resources;
 using CsvHelper;
+using System;
+using System.Linq;
 
 namespace TestSolution.Hooks
 {
@@ -93,11 +95,11 @@ namespace TestSolution.Hooks
         [BeforeScenario("CreateCampaignWithLead", Order = 2)]
         public void CreateCampaign(ScenarioContext scenarioContext)
         {
-            Logger.WriteLine($"==== BeforeScenario Hook: CreateCampaignWithLead ====");
+            Logger.WriteLine($"==== BeforeScenario Hook: Create Campaign With Lead ====");
             var lead = new LeadSource()
             {
-                Name = "Luis Chavez",
-                Email = "luis_jorge95@hotmail.com",
+                Name = GenerateRandomName(),
+                Email = GenerateRandomEmail(),
                 Country = "United States",
                 Address = "Greenway Rd",
                 Address2 = "",
@@ -154,6 +156,7 @@ namespace TestSolution.Hooks
         [AfterScenario("DeleteLead")]
         public void DeleteCampaignAndLead(ScenarioContext scenarioContext)
         {
+            Logger.WriteLine($"==== AfterScenario Hook: Delete Lead ====");
             var lead = (LeadSource)scenarioContext["LeadData"];
 
             _navbarPage?.ClickButton("NavBarButtons", "Navbar Page", "Lead Source List");
@@ -176,6 +179,36 @@ namespace TestSolution.Hooks
                     factory.TerminateWebDriver();
                 }
             }
+        }
+
+        public static class RandomDataGenerator
+        {
+            private static Random random = new Random();
+
+            public static string RandomString(int length)
+            {
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                return new string(Enumerable.Repeat(chars, length)
+                    .Select(s => s[random.Next(s.Length)]).ToArray());
+            }
+        }
+
+        public static string GenerateRandomName()
+        {
+            var random = new Random();
+            string firstName = RandomDataGenerator.RandomString(random.Next(5, 11));
+            string lastName = RandomDataGenerator.RandomString(random.Next(5, 11));
+
+            return $"{firstName} {lastName}";
+        }
+
+        public static string GenerateRandomEmail()
+        {
+            var random = new Random();
+            string namePart = RandomDataGenerator.RandomString(random.Next(5, 11));
+            string domainPart = RandomDataGenerator.RandomString(random.Next(3, 6));
+
+            return $"{namePart}@{domainPart}.com";
         }
     }
 }
