@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.TestPlatform.ObjectModel.Resources;
 using CsvHelper;
 using System;
 using System.Linq;
+using OpenQA.Selenium;
 
 namespace TestSolution.Hooks
 {
@@ -209,6 +210,35 @@ namespace TestSolution.Hooks
             string domainPart = RandomDataGenerator.RandomString(random.Next(3, 6));
 
             return $"{namePart}@{domainPart}.com";
+        }
+
+        [AfterStep]
+        public static void AfterStep(ScenarioContext scenarioContext)
+        {
+            if (scenarioContext.TestError != null)
+            {
+                byte[] screenshot = GetScreenshot(scenarioContext);
+                if (screenshot != null)
+                {
+                    AllureLifecycle.Instance.AddAttachment(
+                        "Failed test screenshot",
+                        "image/png",
+                        screenshot,
+                        ".png"
+                    );
+                }
+            }
+        }
+
+        private static byte[] GetScreenshot(ScenarioContext scenarioContext)
+        {
+            var factory = (WebDriverFactory)scenarioContext["DriverFactory"];
+            var driver = factory.GetInstanceOf();
+            if (driver is ITakesScreenshot takesScreenshot)
+            {
+                return takesScreenshot.GetScreenshot().AsByteArray;
+            }
+            return null!;
         }
     }
 }

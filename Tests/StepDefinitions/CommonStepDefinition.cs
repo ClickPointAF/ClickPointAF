@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using NUnit.Framework;
+using TechTalk.SpecFlow;
 
 namespace TestSolution.StepDefinitions
 {
@@ -27,6 +28,14 @@ namespace TestSolution.StepDefinitions
         {
             _commonPageObject.ClickButton(elementName, pageObject);
         }
+
+        [Given(@"the fail tests and tries to take a screenshot")]
+        public void GivenTheFailTestsAndTriesToTakeAScreenshot()
+        {
+            bool alwaysFalse = false;
+            Assert.That(alwaysFalse, Is.True);
+        }
+
 
     }
 }
