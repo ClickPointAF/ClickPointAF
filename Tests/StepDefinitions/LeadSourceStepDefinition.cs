@@ -30,6 +30,7 @@ namespace TestSolution.StepDefinitions
         public void WhenTheUserClicksDedDeleteButton()
         {
             var lead = (LeadSource)_scenarioContext["LeadData"];
+            Thread.Sleep(2000);
             Assert.That(_leadSourcePage.LeadSourceDisplayed(lead), Is.False);
         }
 

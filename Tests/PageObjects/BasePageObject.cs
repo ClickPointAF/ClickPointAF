@@ -204,20 +204,6 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to find the elements {elementName}. {e.Message}.", e.InnerException);
             }
         }
-        
-
-        public bool IsNotDisplayed(string elementName, string pageView, params string[] arguments)
-        {
-            try
-            {
-                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
-                return _element.NotDisplayed();
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
-            }
-        }
 
         public void ElementHover(string elementName, string pageView, params string[] arguments)
         {
@@ -225,18 +211,6 @@ namespace TestSolution.PageObjects
             {
                 var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
                 _element.Hover();
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
-            }
-        }
-        public bool IsDeleted(string elementName, string pageView, params string[] arguments)
-        {
-            try
-            {
-                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
-                return _element.Deleted();
             }
             catch (Exception e)
             {
