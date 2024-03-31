@@ -1,0 +1,2 @@
+﻿DuplicateDays,StandardizeAddress,AppendCity,MobileCheck,GeolocateIP,DeliveryCount,DeliversTo
+30,false,false,false,false,5,Any Qualified Clients
