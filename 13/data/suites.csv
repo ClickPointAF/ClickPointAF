@@ -1,0 +1,8 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Mar 31 00:37:26 GMT 2024","Sun Mar 31 00:37:45 GMT 2024","18619","","","","","","Edit Price of a Campaign",""
+"passed","Sun Mar 31 00:40:02 GMT 2024","Sun Mar 31 00:40:09 GMT 2024","7040","","","","","","Unsuccesful Login as User",""
+"passed","Sun Mar 31 00:37:56 GMT 2024","Sun Mar 31 00:38:23 GMT 2024","27432","","","","","","Create Lead Source From Inbound Section",""
+"passed","Sun Mar 31 00:39:55 GMT 2024","Sun Mar 31 00:40:01 GMT 2024","6382","","","","","","Succesfully Login as User",""
+"passed","Sun Mar 31 00:39:31 GMT 2024","Sun Mar 31 00:39:51 GMT 2024","19660","","","","","","Delete Lead",""
+"passed","Sun Mar 31 00:38:35 GMT 2024","Sun Mar 31 00:39:05 GMT 2024","29891","","","","","","Create Lead Source From Welcome Section",""
+"failed","Sun Mar 31 00:39:54 GMT 2024","Sun Mar 31 00:39:54 GMT 2024","214","","","","","","Screenshot Test",""
