@@ -30,7 +30,7 @@ namespace TestSolution.PageObjects
                 {
                     CheckElement("PropertieGeolocateIPCheckbox", "Propertie Page");
                 }
-                WriteInput("PropertieDeliveriesTextbox", "Propertie Page", propertie.DuplicateDays!);
+                WriteInput("PropertieDeliveriesTextbox", "Propertie Page", propertie.DeliveryCount!);
                 SelectElementByText("PropertieDeliversToDropdown", "Propertie Page", propertie.DeliversTo!);
                 ClickButton("PropertieCreateButton", "Propertie Page");
             }

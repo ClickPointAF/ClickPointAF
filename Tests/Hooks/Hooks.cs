@@ -162,8 +162,6 @@ namespace TestSolution.Hooks
 
             _navbarPage?.ClickButton("NavBarButtons", "Navbar Page", "Lead Source List");
             _leadSourcePage?.DeleteLead(lead);
-            //_navbarPage?.ClickButton("NavBarButtons", "Navbar Page", "Campaigns");
-            //_campaignPage?.DeleteCampaign(lead);
         }
 
         [AfterScenario]

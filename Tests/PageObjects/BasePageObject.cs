@@ -72,6 +72,7 @@ namespace TestSolution.PageObjects
         {
             try
             {
+                Thread.Sleep(3000);
                 Actions actions = new Actions(_driver);
                 actions.SendKeys(Keys.Escape).Perform();
             }
