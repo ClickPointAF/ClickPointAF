@@ -1,5 +1,5 @@
 ﻿Feature: Campaigns
-Workflow to edit campaigns
+Workflow to edit campaign
 
 @CreateCampaignWithLead @DeleteLead
 Scenario: Edit Price of a Campaign
